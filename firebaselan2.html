@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>IOT3</title>
+	<style type="text/css">
+		/*body{
+			color:red;
+			text-align: center;
+		}*/
+		h1{
+			color:yellow;
+			background-color: red;
+			text-align: center;
+		}
+		body{
+			text-align: center;
+		}
+		img
+		{
+			width: 400px;
+			height: 400px;
+		}
+	</style>
+</head>
+<body>
+    	<h1>HỆ THỐNG PHÂN LOẠI VÀ ĐẾM SẢN PHẨM</h1>
+    	<h2>Số lượng sản phẩm:<span id="soluong">00</span></h2>
+    	<h3>Sản phẩm lỗi:<span id="loi">00</span></h3>
+    	<h4>HINH DÁNG:<span id="hinhdang">00</span></h4>
+    	<h5>MÀU SẮC:<span id="mausac">00</span></h5>
+    	<img id="anhcute" src="./image/Anh-cute.webp">
+    	<!-- <p>MÀU BLUE:<span id="blue">00</span></p>
+    	<p>HÌNH CHỮ NHẬT:<span id="hcn">00</span></p>
+    	<p>HÌNH TAM GIÁC:<span id="giac">00</span></p>
+    	<p>HÌNH TRÒN:<span id="tron">00</span></p> -->
+    	<!-- ten:<input type="text" name="ten"/><br>
+    	matkhau:<input type="text" name="mk"/><br> -->
+    	<!-- <input type="submit"/> -->
+    	<!-- <div>
+    		<button id="bton1">ON<button>
+    		<button id="btoff1">OFF</button>
+    	</div> -->
+    	<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+ 	<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
+    	<script type="text/javascript">
+  // Import the functions you need from the SDKs you need
+  // import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+  // import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  // Import the functions you need from the SDKs you need
+const firebaseConfig = {
+  apiKey: "AIzaSyCKUAi3lSOcRamlxMGPuvopLqwcoi4RAgA",
+  authDomain: "xulyanh-59a07.firebaseapp.com",
+  databaseURL: "https://xulyanh-59a07-default-rtdb.firebaseio.com",
+  projectId: "xulyanh-59a07",
+  storageBucket: "xulyanh-59a07.appspot.com",
+  messagingSenderId: "695658469268",
+  appId: "1:695658469268:web:01529c9703e7206b4ea181",
+  measurementId: "G-KRJXYBZ753"
+};
+
+// Initialize Firebase
+
+  // Initialize Firebase
+  // const app = initializeApp(firebaseConfig);
+  // const analytics = getAnalytics(app);
+   firebase.initializeApp(firebaseConfig);
+  const database = firebase.database();
+  var sosanphamloi
+  var i="0"
+  var k=0
+  database.ref("/Soluong").on("value",function(snapshot){
+  		var soluong=snapshot.val();
+  		document.getElementById("soluong").innerHTML=soluong
+  		setTimeout(function()
+  				{
+  					i = document.getElementById("hinhdang").innerHTML
+  					if(i=="loi")
+  			{     
+  				k = parseInt(k) + 1;
+  				document.getElementById("loi").innerHTML =k
+  			}
+  				},6000)
+  		// if(i=="loi")
+  		// 	{     
+  		// 		 k = parseInt(k) + 1;
+  		// 		 document.getElementById("loi").innerHTML =k
+  		// 	}
+  })
+  database.ref("/data").on("value",function(snapshot){
+  		var hinhdang=snapshot.val();
+  			document.getElementById("hinhdang").innerHTML=hinhdang
+  			// if(hinhdang=="loi")
+  			// {     
+  			// 	 k = parseInt(k) + 1;
+  			// 	 document.getElementById("loi").innerHTML =k
+  			// }
+
+  })
+  database.ref("/mau").on("value",function(snapshot){
+  		var mausac=snapshot.val();
+  			document.getElementById("mausac").innerHTML=mausac
+
+  })
+  // var i = document.getElementById("hinhdang")
+  // k=i.innerHTML
+
+
+    	</script>
+</body>
+</html>
